@@ -2,10 +2,13 @@ const input = document.getElementById("input");
 const btn = document.getElementById("button");
 
 btn.addEventListener("click", () => {
-    findFibWithIt(input.value);
+    f(parseInt(input.value));
+    fR(parseInt(input.value));
 });
 
-const findFibWithIt = (n) => {
+// iterative vers
+
+const f = (n) => {
     let a = 0; // first num in sequence
     let b = 1; // second num in sequence
     let c; // sum of a and b
@@ -25,4 +28,22 @@ const findFibWithIt = (n) => {
 
     console.log(sequence);
 }
+
+// recursive vers
+
+const fR = (n) => {
+
+    if (n <= 1) return n;
+
+    let sequence = [];
+    sequence[n] = fR(n - 1) + fR(n - 2);
+
+    console.log(sequence[n])
+
+}
+
+// merge sort 
+
+
+
 
