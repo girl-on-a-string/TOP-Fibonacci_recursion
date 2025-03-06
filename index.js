@@ -44,6 +44,37 @@ const fR = (n) => {
 
 // merge sort 
 
+// take 2 already sorted arrays and combine them
+
+const merge = (left, right) => {
+    let arr = []
+
+    // break out of loop if one array becomes empty
+
+    while (left.length && right.length) {
+        if (left[0] < right[0]) {
+            arr.push(left.shift());
+        } else {
+            arr.push(right.shift());
+        }
+    }
+
+    return [...arr, ...left, ...right] // concatenate leftovers
+}
 
 
 
+const mergeSort = (sample) => {
+
+    let half = sample.length / 2;
+
+    if (sample.length < 2) {
+        return sample
+    }
+
+    const left = sample.splice(0, half);
+    return merge(mergeSort(left), mergeSort(sample));
+}
+
+let sampleArray = [21, 37, 52, 33, 19, 32, 72, 72];
+console.log(mergeSort(sampleArray))
